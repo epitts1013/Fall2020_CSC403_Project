@@ -155,6 +155,7 @@ namespace Fall2020_CSC403_Project
 
                 instance = null;
                 Close();
+             
             }
             else if (enemy.Health <= 0)
             {
