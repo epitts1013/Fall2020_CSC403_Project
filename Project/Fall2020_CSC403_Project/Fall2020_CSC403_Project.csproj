@@ -52,6 +52,12 @@
     <Compile Include="FrmBattle.Designer.cs">
       <DependentUpon>FrmBattle.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmInteract.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInteract.Designer.cs">
+      <DependentUpon>FrmInteract.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmLevel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +74,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmBattle.resx">
       <DependentUpon>FrmBattle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInteract.resx">
+      <DependentUpon>FrmInteract.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLevel.resx">
       <DependentUpon>FrmLevel.cs</DependentUpon>
@@ -165,6 +174,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="data\wallFuture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="data\powerup_babypeanut.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -13,6 +13,9 @@ namespace Fall2020_CSC403_Project
 
         private List<Enemy> enemies = new List<Enemy>();
         public static Dictionary<Enemy, PictureBox> EnemyPictureDict = new Dictionary<Enemy, PictureBox>();
+        // Tonebone
+        private List<NPC> NPCs = new List<NPC>();
+        public static Dictionary<NPC, PictureBox> NPCPictureDict = new Dictionary<NPC, PictureBox>();
 
         private Character[] walls;
         private Character[] portals;
@@ -22,7 +25,7 @@ namespace Fall2020_CSC403_Project
 
 
         private bool holdLeft, holdRight, holdUp, holdDown;
-
+        private FrmInteract frmInteract;
 
         public FrmLevel()
         {
@@ -103,6 +106,13 @@ namespace Fall2020_CSC403_Project
             enemies.Add(enemyCheeto);
             EnemyPictureDict.Add(enemyCheeto, picEnemyCheeto);
 
+            // Initialize NPC/Powerups
+            NPC powerupBabypeaunt = new NPC(CreatePosition(picPowerupbabypeanut), CreateCollider(picPowerupbabypeanut, PADDING))
+            {
+                // Add what the powerup does here later
+            };
+            NPCs.Add(powerupBabypeaunt);
+            NPCPictureDict.Add(powerupBabypeaunt, picPowerupbabypeanut); 
 
             walls = new Character[NUM_WALLS];
             for (int w = 0; w < NUM_WALLS; w++)
@@ -155,7 +165,13 @@ namespace Fall2020_CSC403_Project
             }
 
             
+            // Tone - testing npc interaction/collision
+            NPCs.ForEach((npc) =>
+            {
+                if (HitAChar(player, npc))
+                    Interact(npc);
 
+            });
             // check collision with enemies
             enemies.ForEach((enemy) =>
             {
@@ -222,6 +238,16 @@ namespace Fall2020_CSC403_Project
             {
                 frmBattle.SetupForBossBattle();
             }
+        }
+
+        // Tone - Interact function
+        private void Interact(NPC npc)
+        {
+            player.ResetMoveSpeed();
+            player.MoveBack();
+            frmInteract = FrmInteract.GetInstance(npc);
+            frmInteract.Show();
+            
         }
 
         protected override void OnDeactivate(EventArgs e)
