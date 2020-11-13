@@ -33,6 +33,7 @@
             this.lblInGameTime = new System.Windows.Forms.Label();
             this.tmrUpdateInGameTime = new System.Windows.Forms.Timer(this.components);
             this.tmrPlayerMove = new System.Windows.Forms.Timer(this.components);
+            this.picPowerupbabypeanut = new System.Windows.Forms.PictureBox();
             this.picWall15 = new System.Windows.Forms.PictureBox();
             this.picWall23 = new System.Windows.Forms.PictureBox();
             this.picWall22 = new System.Windows.Forms.PictureBox();
@@ -62,7 +63,11 @@
             this.picBossKoolAid = new System.Windows.Forms.PictureBox();
             this.picPlayer = new System.Windows.Forms.PictureBox();
             this.picPortal0 = new System.Windows.Forms.PictureBox();
+
+            ((System.ComponentModel.ISupportInitialize)(this.picPowerupbabypeanut)).BeginInit();
+
             this.labelPlayerStats = new System.Windows.Forms.Label();
+
             ((System.ComponentModel.ISupportInitialize)(this.picWall15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picWall23)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picWall22)).BeginInit();
@@ -117,6 +122,16 @@
             this.tmrPlayerMove.Enabled = true;
             this.tmrPlayerMove.Interval = 10;
             this.tmrPlayerMove.Tick += new System.EventHandler(this.tmrPlayerMove_Tick);
+            // 
+            // picPowerupbabypeanut
+            // 
+            this.picPowerupbabypeanut.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.powerup_babypeanut;
+            this.picPowerupbabypeanut.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picPowerupbabypeanut.Location = new System.Drawing.Point(749, 536);
+            this.picPowerupbabypeanut.Name = "picPowerupbabypeanut";
+            this.picPowerupbabypeanut.Size = new System.Drawing.Size(69, 71);
+            this.picPowerupbabypeanut.TabIndex = 31;
+            this.picPowerupbabypeanut.TabStop = false;
             // 
             // picWall15
             // 
@@ -487,7 +502,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+
+           
+            this.Controls.Add(this.picPowerupbabypeanut);
+
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+
             this.Controls.Add(this.picWall15);
             this.Controls.Add(this.picWall23);
             this.Controls.Add(this.picWall22);
@@ -526,6 +546,7 @@
             this.Load += new System.EventHandler(this.FrmLevel_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmLevel_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FrmLevel_KeyUp);
+            ((System.ComponentModel.ISupportInitialize)(this.picPowerupbabypeanut)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picWall15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picWall23)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picWall22)).EndInit();
@@ -594,7 +615,11 @@
         private System.Windows.Forms.PictureBox picWall22;
         private System.Windows.Forms.PictureBox picWall23;
         private System.Windows.Forms.PictureBox picWall15;
+
+        private System.Windows.Forms.PictureBox picPowerupbabypeanut;
+
         private System.Windows.Forms.Label labelPlayerStats;
+
     }
 }
 

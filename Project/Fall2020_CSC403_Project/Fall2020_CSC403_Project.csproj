@@ -58,7 +58,15 @@
     <Compile Include="FrmBattle.Designer.cs">
       <DependentUpon>FrmBattle.cs</DependentUpon>
     </Compile>
+     <Compile Include="FrmInteract.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInteract.Designer.cs">
+      <DependentUpon>FrmInteract.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLevel.cs">
     <Compile Include="Frm2Level.cs">
+
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Frm2Level.Designer.cs">
@@ -78,8 +86,12 @@
     <EmbeddedResource Include="FrmBattle.resx">
       <DependentUpon>FrmBattle.cs</DependentUpon>
     </EmbeddedResource>
+
+     <EmbeddedResource Include="FrmInteract.resx">
+      <DependentUpon>FrmInteract.cs</DependentUpon>
     <EmbeddedResource Include="Frm2Level.resx">
       <DependentUpon>Frm2Level.cs</DependentUpon>
+
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLevel.resx">
       <DependentUpon>FrmLevel.cs</DependentUpon>
@@ -176,6 +188,7 @@
     <None Include="data\wallFuture.png" />
   </ItemGroup>
   <ItemGroup>
+  <None Include="data\powerup_babypeanut.png" />
     <None Include="data\heaven.jpg" />
   </ItemGroup>
   <ItemGroup>

@@ -8,7 +8,10 @@ namespace Fall2020_CSC403_Project.code
 {
     public class Player : BattleCharacter
     {
-        public int Level { get; set; }
+
+        public int Level { get;  private set; }
+
+
         public int EXP { get; private set; }
         public int MP { get; private set; }
         public int MaxMP { get; private set; }
