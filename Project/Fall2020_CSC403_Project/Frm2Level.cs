@@ -316,6 +316,12 @@ namespace Fall2020_CSC403_Project
                     }
                     break;
 
+                case Keys.Tab:
+                    FrmInventory inventory = new FrmInventory();
+                    inventory.Setup();
+                    inventory.Show();
+                    break;
+
                 default:
                     break;
             }
