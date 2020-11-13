@@ -8,15 +8,12 @@ using System.Windows.Forms;
 
 namespace Fall2020_CSC403_Project
 {
-    public partial class FrmLevel : Form
+    public partial class FrmFinal : Form
     {
         private Player player;
 
         private List<Enemy> enemies = new List<Enemy>();
         public static Dictionary<Enemy, PictureBox> EnemyPictureDict = new Dictionary<Enemy, PictureBox>();
-        // Tonebone
-        private List<NPC> NPCs = new List<NPC>();
-        public static Dictionary<NPC, PictureBox> NPCPictureDict = new Dictionary<NPC, PictureBox>();
 
         private Character[] walls;
         private Character[] portals;
@@ -26,53 +23,21 @@ namespace Fall2020_CSC403_Project
 
 
         private bool holdLeft, holdRight, holdUp, holdDown;
-        private FrmInteract frmInteract;
 
-        public FrmLevel()
+
+        public FrmFinal()
         {
             InitializeComponent();
 
         }
 
 
-        //public void MovePictureBoxes(string direction)
-        //{
-        //    foreach (Control x in this.Controls)
-        //    {
-
-        //        if (x is PictureBox && (string)x.Tag == "background1" || x is PictureBox && (string)x.Tag == "enemyPic" || x is PictureBox && (string)x.Tag == "wallPic")
-        //        {
-
-        //            if (direction == "Left")
-        //            {
-        //                x.Left -= 3;
-        //            }
-
-        //            if (direction == "Right")
-        //            {
-        //                x.Left += 3;
-        //            }
-
-        //            if (direction == "Down")
-        //            {
-        //                x.Top -= 3;
-        //            }
-
-        //            if (direction == "Up")
-        //            {
-        //                x.Top += 3;
-        //            }
-
-        //        }
-        //    }
-        //}
-
-
-        private void FrmLevel_Load(object sender, EventArgs e)
+        
+        private void Frm2Level_Load(object sender, EventArgs e)
         {
 
             const int PADDING = 7;
-            const int NUM_WALLS = 24;
+            const int NUM_WALLS = 18;
             const int NUM_portals = 1;
 
             // initialize player
@@ -80,41 +45,7 @@ namespace Fall2020_CSC403_Project
             Game.player = player;
 
             // initialize enemies on this form
-            Enemy bossKoolaid = new Enemy(CreatePosition(picBossKoolAid), CreateCollider(picBossKoolAid, PADDING), 100, 60)
-            {
-                Img = picBossKoolAid.BackgroundImage,
-                Color = Color.Red,
-                IsBoss = true
-            };
 
-            enemies.Add(bossKoolaid);
-            EnemyPictureDict.Add(bossKoolaid, picBossKoolAid);
-
-            Enemy enemyPoisonPacket = new Enemy(CreatePosition(picEnemyPoisonPacket), CreateCollider(picEnemyPoisonPacket, PADDING), 50)
-            {
-                Img = picEnemyPoisonPacket.BackgroundImage,
-                Color = Color.Green,
-                IsBoss = false
-            };
-            enemies.Add(enemyPoisonPacket);
-            EnemyPictureDict.Add(enemyPoisonPacket, picEnemyPoisonPacket);
-
-            Enemy enemyCheeto = new Enemy(CreatePosition(picEnemyCheeto), CreateCollider(picEnemyCheeto, PADDING), 50)
-            {
-                Img = picEnemyCheeto.BackgroundImage,
-                Color = Color.FromArgb(255, 245, 161),
-                IsBoss = false
-            };
-            enemies.Add(enemyCheeto);
-            EnemyPictureDict.Add(enemyCheeto, picEnemyCheeto);
-
-            // Initialize NPC/Powerups
-            NPC powerupBabypeaunt = new NPC(CreatePosition(picPowerupbabypeanut), CreateCollider(picPowerupbabypeanut, PADDING))
-            {
-                // Add what the powerup does here later
-            };
-            NPCs.Add(powerupBabypeaunt);
-            NPCPictureDict.Add(powerupBabypeaunt, picPowerupbabypeanut); 
 
             walls = new Character[NUM_WALLS];
             for (int w = 0; w < NUM_WALLS; w++)
@@ -153,11 +84,18 @@ namespace Fall2020_CSC403_Project
             TimeSpan span = DateTime.Now - timeBegin;
             string time = span.ToString(@"hh\:mm\:ss");
             lblInGameTime.Text = "Time: " + time.ToString();
-            labelPlayerStats.Text = "Level: " + player.Level + "\nHealth: " + player.Health + "/" + player.MaxHealth + "\nEXP: " + player.EXP;
+            if (Globals.PlayerIsAlive == false)
+            {
+                //player.ResetMoveSpeed();
+                Thread.Sleep(100);
+                Close();
+            }
         }
 
         private void tmrPlayerMove_Tick(object sender, EventArgs e)
         {
+
+
             // move player
             player.Move();
 
@@ -168,17 +106,6 @@ namespace Fall2020_CSC403_Project
             }
 
 
-            
-            // Tone - testing npc interaction/collision
-            NPCs.ForEach((npc) =>
-            {
-                if (npc.IsBanished == false && HitAChar(player, npc))
-                    Interact(npc);
-
-
-
-
-            });
             // check collision with enemies
             enemies.ForEach((enemy) =>
             {
@@ -192,11 +119,12 @@ namespace Fall2020_CSC403_Project
 
             if (HitAPortal(player))
             {
-                Thread.Sleep(1000);
+                
                 player.MoveBack();
-                Thread.Sleep(400);
+                Thread.Sleep(200);
                 player.ResetMoveSpeed();
-                Globals.Level1Beat = true;
+                Thread.Sleep(1000);
+                Globals.LevelNumber = 3;
                 Close();
 
             }
@@ -215,7 +143,7 @@ namespace Fall2020_CSC403_Project
             }
             return hitAPortal;
         }
-
+    
 
         private bool HitAWall(Character c)
         {
@@ -248,16 +176,6 @@ namespace Fall2020_CSC403_Project
             {
                 frmBattle.SetupForBossBattle();
             }
-        }
-
-        // Tone - Interact function
-        private void Interact(NPC npc)
-        {
-            player.ResetMoveSpeed();
-            player.MoveBack();
-            frmInteract = FrmInteract.GetInstance(npc);
-            frmInteract.Show();
-            
         }
 
         protected override void OnDeactivate(EventArgs e)
@@ -295,7 +213,7 @@ namespace Fall2020_CSC403_Project
 
         }
 
-        private void FrmLevel_KeyDown(object sender, KeyEventArgs e)
+        private void Frm2Level_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
             {
@@ -340,7 +258,7 @@ namespace Fall2020_CSC403_Project
             }
         }
 
-        private void FrmLevel_KeyUp(object sender, KeyEventArgs e)
+        private void Frm2Level_KeyUp(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
             {

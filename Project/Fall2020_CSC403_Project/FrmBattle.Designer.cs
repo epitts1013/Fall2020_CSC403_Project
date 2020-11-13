@@ -34,6 +34,10 @@
             this.picPlayer = new System.Windows.Forms.PictureBox();
             this.tmrFinalBattle = new System.Windows.Forms.Timer(this.components);
             this.lblInfoPanel = new System.Windows.Forms.Label();
+            this.btnMagicAttack = new System.Windows.Forms.Button();
+            this.lblPlayerMPFull = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnHeal = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picBossBattle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picEnemy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPlayer)).BeginInit();
@@ -55,7 +59,7 @@
             this.lblPlayerHealthFull.BackColor = System.Drawing.Color.Blue;
             this.lblPlayerHealthFull.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPlayerHealthFull.ForeColor = System.Drawing.Color.White;
-            this.lblPlayerHealthFull.Location = new System.Drawing.Point(71, 60);
+            this.lblPlayerHealthFull.Location = new System.Drawing.Point(73, 34);
             this.lblPlayerHealthFull.Name = "lblPlayerHealthFull";
             this.lblPlayerHealthFull.Size = new System.Drawing.Size(226, 20);
             this.lblPlayerHealthFull.TabIndex = 3;
@@ -64,7 +68,7 @@
             // 
             this.label1.BackColor = System.Drawing.Color.Black;
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label1.Location = new System.Drawing.Point(70, 59);
+            this.label1.Location = new System.Drawing.Point(72, 33);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(229, 23);
             this.label1.TabIndex = 4;
@@ -73,7 +77,7 @@
             // 
             this.label2.BackColor = System.Drawing.Color.Black;
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label2.Location = new System.Drawing.Point(515, 59);
+            this.label2.Location = new System.Drawing.Point(517, 33);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(229, 23);
             this.label2.TabIndex = 5;
@@ -83,7 +87,7 @@
             this.lblEnemyHealthFull.BackColor = System.Drawing.Color.Blue;
             this.lblEnemyHealthFull.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEnemyHealthFull.ForeColor = System.Drawing.Color.White;
-            this.lblEnemyHealthFull.Location = new System.Drawing.Point(516, 60);
+            this.lblEnemyHealthFull.Location = new System.Drawing.Point(518, 34);
             this.lblEnemyHealthFull.Name = "lblEnemyHealthFull";
             this.lblEnemyHealthFull.Size = new System.Drawing.Size(226, 20);
             this.lblEnemyHealthFull.TabIndex = 6;
@@ -138,6 +142,47 @@
             this.lblInfoPanel.TabIndex = 8;
             this.lblInfoPanel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btnMagicAttack
+            // 
+            this.btnMagicAttack.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMagicAttack.Location = new System.Drawing.Point(345, 422);
+            this.btnMagicAttack.Name = "btnMagicAttack";
+            this.btnMagicAttack.Size = new System.Drawing.Size(128, 43);
+            this.btnMagicAttack.TabIndex = 9;
+            this.btnMagicAttack.Text = "Magic Attack";
+            this.btnMagicAttack.UseVisualStyleBackColor = true;
+            this.btnMagicAttack.Click += new System.EventHandler(this.btnMagicAttack_Click);
+            // 
+            // lblPlayerMPFull
+            // 
+            this.lblPlayerMPFull.BackColor = System.Drawing.Color.Lime;
+            this.lblPlayerMPFull.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPlayerMPFull.ForeColor = System.Drawing.Color.White;
+            this.lblPlayerMPFull.Location = new System.Drawing.Point(73, 66);
+            this.lblPlayerMPFull.Name = "lblPlayerMPFull";
+            this.lblPlayerMPFull.Size = new System.Drawing.Size(226, 20);
+            this.lblPlayerMPFull.TabIndex = 10;
+            // 
+            // label4
+            // 
+            this.label4.BackColor = System.Drawing.Color.Black;
+            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label4.Location = new System.Drawing.Point(72, 65);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(229, 23);
+            this.label4.TabIndex = 11;
+            // 
+            // btnHeal
+            // 
+            this.btnHeal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHeal.Location = new System.Drawing.Point(570, 422);
+            this.btnHeal.Name = "btnHeal";
+            this.btnHeal.Size = new System.Drawing.Size(128, 43);
+            this.btnHeal.TabIndex = 12;
+            this.btnHeal.Text = "Heal";
+            this.btnHeal.UseVisualStyleBackColor = true;
+            this.btnHeal.Click += new System.EventHandler(this.btnHeal_Click);
+            // 
             // FrmBattle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -154,6 +199,10 @@
             this.Controls.Add(this.btnAttack);
             this.Controls.Add(this.picEnemy);
             this.Controls.Add(this.picPlayer);
+            this.Controls.Add(this.btnMagicAttack);
+            this.Controls.Add(this.lblPlayerMPFull);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.btnHeal);
             this.DoubleBuffered = true;
             this.Name = "FrmBattle";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -179,5 +228,9 @@
     private System.Windows.Forms.PictureBox picBossBattle;
     private System.Windows.Forms.Timer tmrFinalBattle;
         private System.Windows.Forms.Label lblInfoPanel;
+        private System.Windows.Forms.Button btnMagicAttack;
+        private System.Windows.Forms.Label lblPlayerMPFull;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnHeal;
     }
 }

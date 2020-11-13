@@ -20,9 +20,6 @@ namespace Fall2020_CSC403_Project
             player = Game.player;
         }
 
-
-        
-
         public void Setup()
         {
             // update for this enemy
@@ -41,12 +38,22 @@ namespace Fall2020_CSC403_Project
 
         public void SetupForBossBattle()
         {
+
+            if (Globals.LevelNumber == 1)
+            {
+                SoundPlayer simpleSound = new SoundPlayer(Resources.final_battle);
+                simpleSound.Play();
+            }
+            else
+            {
+                picBossBattle.BackgroundImage = Resources.FINALVS;
+                SoundPlayer simpleSound1 = new SoundPlayer(Resources.final_battle);
+                simpleSound1.Play();
+            }
+
             picBossBattle.Location = Point.Empty;
             picBossBattle.Size = ClientSize;
             picBossBattle.Visible = true;
-
-            SoundPlayer simpleSound = new SoundPlayer(Resources.final_battle);
-            simpleSound.Play();
 
             tmrFinalBattle.Enabled = true;
         }
@@ -65,34 +72,52 @@ namespace Fall2020_CSC403_Project
         private void UpdateHealthBars()
         {
             float playerHealthPer = player.Health / (float)player.MaxHealth;
+            float playerMpPer = player.MP / (float)player.MaxMP;
             float enemyHealthPer = enemy.Health / (float)enemy.MaxHealth;
 
             const int MAX_HEALTHBAR_WIDTH = 226;
             lblPlayerHealthFull.Width = (int)(MAX_HEALTHBAR_WIDTH * playerHealthPer);
+            lblPlayerMPFull.Width = (int)(MAX_HEALTHBAR_WIDTH * playerMpPer);
             lblEnemyHealthFull.Width = (int)(MAX_HEALTHBAR_WIDTH * enemyHealthPer);
 
             lblPlayerHealthFull.Text = player.Health.ToString();
+            lblPlayerMPFull.Text = player.MP.ToString();
             lblEnemyHealthFull.Text = enemy.Health.ToString();
         }
 
         private void btnAttack_Click(object sender, EventArgs e)
-        {
+        { 
             player.OnAttack(-4 + (-1 * (player.Level - 1)));
             if (enemy.Health > 0)
             {
                 // Will - Enemy "animation effect"
                 if (enemy.Img == Resources.enemy_koolaid)
                 {
-
                     if (enemy.IsAlive == true)
                     {
-                        picEnemy.BackgroundImage = Resources.enemy_koolaid_hit;
+                        picEnemy.BackgroundImage = Resources.enemy_koolaid;
                     }
                     else
                     {
                         picEnemy.BackgroundImage = Resources.enemy_koolaid_dead;
                     }
                 }
+
+
+
+                else if (enemy.Img == Resources.BuffCherry)
+                {
+                    if (enemy.IsAlive == true)
+                    {
+                        picEnemy.BackgroundImage = Resources.BuffCherry;
+                    }
+                    else
+                    {
+                        picEnemy.BackgroundImage = Resources.enemy_koolaid_cherry_hit;
+                    }
+                }
+
+                    
 
 
                 else if (enemy.Img == Resources.enemy_cheetos)
@@ -107,7 +132,7 @@ namespace Fall2020_CSC403_Project
                     }
                 }
 
-                else // (enemy.Img == Resources.enemy_poisonpacket)
+                else //(enemy.Img == Resources.enemy_poisonpacket)
                 {
 
                     if (enemy.IsAlive == true)
@@ -149,15 +174,19 @@ namespace Fall2020_CSC403_Project
             {
                 picPlayer.BackgroundImage = Resources.player_dead;
                 picPlayer.Refresh();
-
-                // lblInfoPanel.Text = $"You have died, Mr. Peanut is very disappointed in you :(";
-                Thread.Sleep(2000);
-
-                instance = null;
+                Thread.Sleep(3000);
+                Globals.PlayerIsAlive = false;
                 Close();
+             
             }
             else if (enemy.Health <= 0)
             {
+                if (Globals.LevelsGiven == false && Globals.LevelNumber == 2)
+                {
+                    player.Level = 3;
+                    Globals.LevelsGiven = true;
+                }
+
                 lblInfoPanel.Text = $"Enemy was defeated. Mr. Peanut gained {enemy.ExpReward} experience points!";
                 Application.DoEvents();
                 Thread.Sleep(2000);
@@ -169,11 +198,173 @@ namespace Fall2020_CSC403_Project
                     Thread.Sleep(2000);
                 }
                 enemy.IsAlive = false;
-                FrmLevel.EnemyPictureDict[enemy].BackgroundImage = null;
-                FrmLevel.EnemyPictureDict[enemy].SendToBack();
-
+                if (Globals.LevelNumber == 1)
+                {
+                    FrmLevel.EnemyPictureDict[enemy].BackgroundImage = null;
+                    FrmLevel.EnemyPictureDict[enemy].SendToBack();
+                }
+                else
+                {
+                    Frm2Level.EnemyPictureDict[enemy].BackgroundImage = null;
+                    Frm2Level.EnemyPictureDict[enemy].SendToBack();
+                }
                 instance = null;
                 Close();
+            }
+        }
+
+        private void btnMagicAttack_Click(object sender, EventArgs e)
+        {
+            if (player.DecrementMP(10))
+            {
+                player.OnAttack(-4 + (-1 * (player.Level + 3)));
+                if (enemy.Health > 0)
+                {
+                    // Will - Enemy "animation effect"
+                    if (enemy.Img == Resources.enemy_koolaid)
+                    {
+                        if (enemy.IsAlive == true)
+                        {
+                            picEnemy.BackgroundImage = Resources.enemy_koolaid;
+                        }
+                        else
+                        {
+                            picEnemy.BackgroundImage = Resources.enemy_koolaid_dead;
+                        }
+                    }
+
+
+
+                    else if (enemy.Img == Resources.BuffCherry)
+                    {
+                        if (enemy.IsAlive == true)
+                        {
+                            picEnemy.BackgroundImage = Resources.BuffCherry;
+                        }
+                        else
+                        {
+                            picEnemy.BackgroundImage = Resources.enemy_koolaid_cherry_hit;
+                        }
+                    }
+
+
+
+
+                    else if (enemy.Img == Resources.enemy_cheetos)
+                    {
+                        if (enemy.IsAlive == true)
+                        {
+                            picEnemy.BackgroundImage = Resources.enemy_cheetos_fw_hit;
+                        }
+                        else
+                        {
+                            picEnemy.BackgroundImage = Resources.enemy_cheetos_fw_dead;
+                        }
+                    }
+
+                    else //(enemy.Img == Resources.enemy_poisonpacket)
+                    {
+
+                        if (enemy.IsAlive == true)
+                        {
+                            picEnemy.BackgroundImage = Resources.enemy_poisonpacket_fw_hit;
+                        }
+                        else
+                        {
+                            picEnemy.BackgroundImage = Resources.enemy_poisonpacket_fw_dead;
+                        }
+                    }
+
+                    if (enemy.IsAlive == true)
+                    {
+                        picEnemy.Refresh();
+                    }
+
+                    Thread.Sleep(100);
+
+                    picEnemy.BackgroundImage = enemy.Img;
+                    picEnemy.Refresh();
+
+
+                    enemy.OnAttack(-2);
+
+
+                    // Will - Player "animation effect"
+                    picPlayer.BackgroundImage = Resources.player_hit;
+                    picPlayer.Refresh();
+
+                    Thread.Sleep(100);
+
+                    picPlayer.BackgroundImage = Resources.player;
+                    picPlayer.Refresh();
+                }
+
+                UpdateHealthBars();
+                if (player.Health <= 0)
+                {
+                    picPlayer.BackgroundImage = Resources.player_dead;
+                    picPlayer.Refresh();
+                    Globals.PlayerIsAlive = false;
+                    Close();
+
+                }
+                else if (enemy.Health <= 0)
+                {
+                    lblInfoPanel.Text = $"Enemy was defeated. Mr. Peanut gained {enemy.ExpReward} experience points!";
+                    Application.DoEvents();
+                    Thread.Sleep(2000);
+
+                    if (player.AwardEXP(enemy.ExpReward))
+                    {
+                        lblInfoPanel.Text = $"Mr. Peanut leveled up! Level is now {player.Level}!";
+                        Application.DoEvents();
+                        Thread.Sleep(2000);
+                    }
+                    enemy.IsAlive = false;
+                    if (Globals.LevelNumber == 1)
+                    {
+                        FrmLevel.EnemyPictureDict[enemy].BackgroundImage = null;
+                        FrmLevel.EnemyPictureDict[enemy].SendToBack();
+                    }
+                    else
+                    {
+                        Frm2Level.EnemyPictureDict[enemy].BackgroundImage = null;
+                        Frm2Level.EnemyPictureDict[enemy].SendToBack();
+                    }
+                    instance = null;
+                    Close();
+                }
+            }
+        }
+        private void btnHeal_Click(object sender, EventArgs e)
+        {
+            if (player.DecrementMP(5))
+            {
+                player.AlterHealth(15);
+
+                if (enemy.Health > 0)
+                {
+                    enemy.OnAttack(-2);
+
+                    // Will - Player "animation effect"
+                    picPlayer.BackgroundImage = Resources.player_hit;
+                    picPlayer.Refresh();
+
+                    Thread.Sleep(100);
+
+                    picPlayer.BackgroundImage = Resources.player;
+                    picPlayer.Refresh();
+                }
+
+                UpdateHealthBars();
+                if (player.Health <= 0)
+                {
+                    picPlayer.BackgroundImage = Resources.player_dead;
+                    picPlayer.Refresh();
+                    Globals.PlayerIsAlive = false;
+                    Close();
+
+                }
             }
         }
 
@@ -202,5 +393,6 @@ namespace Fall2020_CSC403_Project
         {
 
         }
+
     }
 }

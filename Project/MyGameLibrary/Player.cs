@@ -8,13 +8,33 @@ namespace Fall2020_CSC403_Project.code
 {
     public class Player : BattleCharacter
     {
+
         public int Level { get;  private set; }
+
+
         public int EXP { get; private set; }
+        public int MP { get; private set; }
+        public int MaxMP { get; private set; }
 
         public Player(Vector2 initPos, Collider collider) : base(initPos, collider)
         {
             Level = 1;
             EXP = 0;
+            MaxMP = 20;
+            MP = MaxMP;
+        }
+
+        public bool DecrementMP(int mp)
+        {
+            if (mp <= 0)
+                return false;
+
+            if (MP - mp >= 0)
+            {
+                MP -= mp;
+                return true;
+            }
+            else return false;
         }
 
         /// <summary>
@@ -37,6 +57,8 @@ namespace Fall2020_CSC403_Project.code
             {
                 MaxHealth += 5;
                 Health = MaxHealth;
+                MaxMP += 5;
+                MP = MaxMP;
                 return true;
             }
             else

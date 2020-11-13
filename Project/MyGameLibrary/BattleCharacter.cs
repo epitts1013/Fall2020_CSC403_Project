@@ -10,8 +10,8 @@ namespace Fall2020_CSC403_Project.code
 {
     public class BattleCharacter : Character
     {
-        public int Health { get; protected set; }
-        public int MaxHealth { get; protected set; }
+        public int Health { get; set; }
+        public int MaxHealth { get; set; }
         private float strength;
 
         public event Action<int> AttackEvent;
@@ -21,6 +21,7 @@ namespace Fall2020_CSC403_Project.code
             MaxHealth = maxHealth;
             strength = 2;
             Health = MaxHealth;
+            
         }
 
         public void OnAttack(int amount)
@@ -30,7 +31,10 @@ namespace Fall2020_CSC403_Project.code
 
         public void AlterHealth(int amount)
         {
-            Health += amount;
+            if (Health + amount > MaxHealth)
+                Health = MaxHealth;
+            else
+                Health += amount;
         }
     }
 }

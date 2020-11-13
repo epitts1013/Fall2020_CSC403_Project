@@ -46,17 +46,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmFinal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFinal.Designer.cs">
+      <DependentUpon>FrmFinal.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmBattle.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmBattle.Designer.cs">
       <DependentUpon>FrmBattle.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmInteract.cs">
+     <Compile Include="FrmInteract.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmInteract.Designer.cs">
       <DependentUpon>FrmInteract.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLevel.cs">
+    <Compile Include="Frm2Level.cs">
+
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm2Level.Designer.cs">
+      <DependentUpon>Frm2Level.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmLevel.cs">
       <SubType>Form</SubType>
@@ -64,25 +78,23 @@
     <Compile Include="FrmLevel.Designer.cs">
       <DependentUpon>FrmLevel.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmSecondLevel.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmSecondLevel.Designer.cs">
-      <DependentUpon>FrmSecondLevel.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmFinal.resx">
+      <DependentUpon>FrmFinal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmBattle.resx">
       <DependentUpon>FrmBattle.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmInteract.resx">
+
+     <EmbeddedResource Include="FrmInteract.resx">
       <DependentUpon>FrmInteract.cs</DependentUpon>
+    <EmbeddedResource Include="Frm2Level.resx">
+      <DependentUpon>Frm2Level.cs</DependentUpon>
+
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLevel.resx">
       <DependentUpon>FrmLevel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmSecondLevel.resx">
-      <DependentUpon>FrmSecondLevel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -176,7 +188,32 @@
     <None Include="data\wallFuture.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="data\powerup_babypeanut.png" />
+  <None Include="data\powerup_babypeanut.png" />
+    <None Include="data\heaven.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="data\BuffCherry.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="data\FINALVS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="data\MsPeanut.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="data\enemy_koolaid_cherry_hit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="data\mariocherry.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="data\wallPillar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="data\exit.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="data\win.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
