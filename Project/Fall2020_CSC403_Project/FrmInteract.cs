@@ -35,7 +35,7 @@ namespace Fall2020_CSC403_Project
         private void button1_Click(object sender, EventArgs e)
         {
             lblInteract.Text = "Come child, the Kool-Aid Demon shall pay for his crimes.";
-            
+
 
         }
 
@@ -43,13 +43,17 @@ namespace Fall2020_CSC403_Project
         {
             lblInteract.Text = "Come child!";
             npc.IsBanished = true;
+            
+         
         }
 
         private void btnInteract2_Click(object sender, EventArgs e)
         {
             lblInteract.Text = "You dishonor your father, BEGONE!";
             npc.IsBanished = true;
-            
+            //SoundPlayer simpleSound = new SoundPlayer(Resources.final_battle);
+            //simpleSound.Play();
+
         }
 
         private void btnLeaveInteraction_Click(object sender, EventArgs e)
