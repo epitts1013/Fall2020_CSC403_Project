@@ -12,6 +12,7 @@ namespace Fall2020_CSC403_Project.code
         public int EXP { get; private set; }
         public int MP { get; private set; }
         public int MaxMP { get; private set; }
+        public List<string> Inventory { get; private set; }
 
         public Player(Vector2 initPos, Collider collider) : base(initPos, collider)
         {
@@ -19,19 +20,28 @@ namespace Fall2020_CSC403_Project.code
             EXP = 0;
             MaxMP = 20;
             MP = MaxMP;
+            Inventory = new List<string>() { "Health Potion", "Magic Potion" };
         }
 
-        public bool DecrementMP(int mp)
+        public bool AlterMP(int mp)
         {
-            if (mp <= 0)
-                return false;
-
-            if (MP - mp >= 0)
+            if (mp > 0)
             {
-                MP -= mp;
+                if (MP + mp <= MaxMP)
+                    MP += mp;
+                else
+                    MP = MaxMP;
                 return true;
             }
-            else return false;
+            else
+            {
+                if (MP + mp >= 0)
+                {
+                    MP += mp;
+                    return true;
+                }
+                else return false;
+            }
         }
 
         /// <summary>

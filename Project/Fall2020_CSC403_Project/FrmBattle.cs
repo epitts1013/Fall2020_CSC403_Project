@@ -208,7 +208,7 @@ namespace Fall2020_CSC403_Project
 
         private void btnMagicAttack_Click(object sender, EventArgs e)
         {
-            if (player.DecrementMP(10))
+            if (player.AlterMP(-10))
             {
                 player.OnAttack(-4 + (-1 * (player.Level + 3)));
                 if (enemy.Health > 0)
@@ -331,7 +331,7 @@ namespace Fall2020_CSC403_Project
         }
         private void btnHeal_Click(object sender, EventArgs e)
         {
-            if (player.DecrementMP(5))
+            if (player.AlterMP(-5))
             {
                 player.AlterHealth(15);
 

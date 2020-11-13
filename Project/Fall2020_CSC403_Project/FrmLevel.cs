@@ -239,29 +239,12 @@ namespace Fall2020_CSC403_Project
             player.ResetMoveSpeed();
         }
 
-        private void background_Click(object sender, EventArgs e)
+
+        private void btnInventory_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void portal_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void picBossKoolAid_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-
+            FrmInventory inventory = new FrmInventory();
+            inventory.Setup();
+            inventory.Show();
         }
 
         private void FrmLevel_KeyDown(object sender, KeyEventArgs e)
@@ -304,6 +287,12 @@ namespace Fall2020_CSC403_Project
                     }
                     break;
 
+                case Keys.Tab:
+                    FrmInventory inventory = new FrmInventory();
+                    inventory.Setup();
+                    inventory.Show();
+                    break;
+
                 default:
                     break;
             }
@@ -339,9 +328,35 @@ namespace Fall2020_CSC403_Project
             }
         }
 
+        #region Methods Accidentally Created by Double-Clicking That We Can't Delete Without Windows Forms Throwing a Fit
         private void lblInGameTime_Click(object sender, EventArgs e)
         {
 
         }
+        private void background_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void portal_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void picBossKoolAid_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
     }
 }
