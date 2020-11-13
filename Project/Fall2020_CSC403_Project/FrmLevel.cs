@@ -168,7 +168,7 @@ namespace Fall2020_CSC403_Project
             // Tone - testing npc interaction/collision
             NPCs.ForEach((npc) =>
             {
-                if (HitAChar(player, npc))
+                if (npc.IsBanished == false && HitAChar(player, npc))
                     Interact(npc);
 
             });

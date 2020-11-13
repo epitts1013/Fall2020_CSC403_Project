@@ -6,7 +6,8 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
+using System.Media;
 using System.Windows.Forms;
 
 namespace Fall2020_CSC403_Project
@@ -33,7 +34,29 @@ namespace Fall2020_CSC403_Project
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            lblInteract.Text = "Come child, the Kool-Aid Demon shall pay for his crimes.";
+            
 
+        }
+
+        private void lblCollectChild_Click(object sender, EventArgs e)
+        {
+            lblInteract.Text = "Come child!";
+            npc.IsBanished = true;
+        }
+
+        private void btnInteract2_Click(object sender, EventArgs e)
+        {
+            lblInteract.Text = "You dishonor your father, BEGONE!";
+            npc.IsBanished = true;
+            
+        }
+
+        private void btnLeaveInteraction_Click(object sender, EventArgs e)
+        {
+            FrmLevel.NPCPictureDict[npc].BackgroundImage = null;
+            FrmLevel.NPCPictureDict[npc].SendToBack();
+            Hide();
         }
     }
 }
