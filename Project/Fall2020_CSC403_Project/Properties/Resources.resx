@@ -168,7 +168,33 @@
   </data>
   <data name="wallFuture" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\data\wallFuture.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data
+  <data name="BuffCherry" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\BuffCherry.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="enemy_koolaid_cherry_hit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\enemy_koolaid_cherry_hit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FINALVS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\FINALVS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="heaven" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\heaven.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MsPeanut" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\MsPeanut.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="exit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\exit.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mariocherry" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\mariocherry.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="wallPillar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\wallPillar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="win" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\data\win.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   <data name="enemy_poisonpacket" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\data\enemy_poisonpacket.fw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

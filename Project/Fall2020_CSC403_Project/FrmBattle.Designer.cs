@@ -34,6 +34,7 @@
             this.picPlayer = new System.Windows.Forms.PictureBox();
             this.tmrFinalBattle = new System.Windows.Forms.Timer(this.components);
             this.lblInfoPanel = new System.Windows.Forms.Label();
+            this.btnMagicAttack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picBossBattle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picEnemy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPlayer)).BeginInit();
@@ -138,6 +139,17 @@
             this.lblInfoPanel.TabIndex = 8;
             this.lblInfoPanel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btnMagicAttack
+            // 
+            this.btnMagicAttack.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMagicAttack.Location = new System.Drawing.Point(345, 422);
+            this.btnMagicAttack.Name = "btnMagicAttack";
+            this.btnMagicAttack.Size = new System.Drawing.Size(128, 43);
+            this.btnMagicAttack.TabIndex = 9;
+            this.btnMagicAttack.Text = "Magic Attack";
+            this.btnMagicAttack.UseVisualStyleBackColor = true;
+            this.btnMagicAttack.Click += new System.EventHandler(this.btnMagicAttack_Click);
+            // 
             // FrmBattle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -145,6 +157,7 @@
             this.BackColor = System.Drawing.Color.Green;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(809, 621);
+            this.Controls.Add(this.btnMagicAttack);
             this.Controls.Add(this.lblInfoPanel);
             this.Controls.Add(this.picBossBattle);
             this.Controls.Add(this.lblEnemyHealthFull);
@@ -179,5 +192,6 @@
     private System.Windows.Forms.PictureBox picBossBattle;
     private System.Windows.Forms.Timer tmrFinalBattle;
         private System.Windows.Forms.Label lblInfoPanel;
+        private System.Windows.Forms.Button btnMagicAttack;
     }
 }
